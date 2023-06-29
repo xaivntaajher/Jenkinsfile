@@ -26,10 +26,10 @@ pipeline {
                     env.PATH = "${dockerTool}/bin:${env.PATH}"
                 }
 
-                withCredentials([usernamePassword(credentialsID: 'personal-docker-hub-creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'personal-docker-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "echo ${DOCKER_USERNAME}"
                 }
-                
+
                 sh 'docker --version'
             }
         }
